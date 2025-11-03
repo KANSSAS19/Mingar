@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Website Profil Desa Pasir Putih</title>
+  <meta name="description" content="Website Profil Desa Pasir Putih — potensi, informasi, galeri, dan kontak." />
+
+  <!-- Google Font (opsional, but nice) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6fbff;
+      --primary:#2b8fbf; /* blue sea */
+      --accent:#7fd3b9;  /* soft green */
+      --muted:#6b7280;
+      --card:#ffffff;
+      --radius:14px;
+      --max-w:1100px;
+      --gap:1.25rem;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,var(--bg),#ffffff);
+      color:#07304c;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    .container{max-width:var(--max-w);margin:0 auto;padding:2rem;}
+    header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(20,40,60,0.06);}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.75rem 1rem;
+      max-width:var(--max-w);margin:0 auto;
+    }
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:700;color:var(--primary)}
+    .logo{
+      width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--primary),#5fb1df);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:0 6px 18px rgba(43,143,191,0.2);
+    }
+
+    nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+    nav a{color:#07304c;text-decoration:none;font-weight:600;padding:.5rem .65rem;border-radius:8px}
+    nav a:hover{background:rgba(43,143,191,0.08);color:var(--primary)}
+
+    .cta{background:var(--accent);color:#033; padding:.45rem .8rem;border-radius:10px;font-weight:700}
+    .cta:hover{filter:brightness(.98);transform:translateY(-1px);}
+
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;padding:3rem 1rem 4rem;
+    }
+    .hero-inner{display:flex;flex-direction:column;gap:1.25rem}
+    .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--primary),#6fb6e2);color:white;padding:6px 10px;border-radius:999px;font-weight:700;font-size:.8rem}
+    h1{font-size:2.1rem;margin:0;color:#043047;letter-spacing:-0.5px}
+    p.lead{margin:0;color:var(--muted);max-width:60ch}
+
+    .hero-card{
+      margin-top:0.6rem;padding:1.15rem;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.9));box-shadow:0 10px 30px rgba(10,30,60,0.06);
+    }
+
+    .features{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+    .feature{flex:1 1 160px;background:var(--card);border-radius:12px;padding:.85rem;box-shadow:0 6px 18px rgba(10,30,60,0.04)}
+    .feature h4{margin:.25rem 0 .25rem;font-size:1rem}
+    .feature p{margin:0;color:var(--muted);font-size:.9rem}
+
+    /* LAYOUT SECTIONS */
+    section{padding:3rem 0;border-top:1px solid rgba(10,30,60,0.02)}
+    .two-col{display:grid;grid-template-columns: 1fr 420px;gap:2rem;align-items:start}
+    .card{background:var(--card);padding:1.2rem;border-radius:12px;box-shadow:0 10px 30px rgba(10,30,60,0.04)}
+    .small{font-size:.95rem;color:var(--muted)}
+
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+
+    /* NEWS LIST */
+    .news-list{display:flex;flex-direction:column;gap:.6rem}
+    .news-item{display:flex;gap:.75rem;align-items:flex-start}
+    .news-thumb{width:88px;height:66px;border-radius:8px;object-fit:cover}
+
+    /* CONTACT */
+    form{display:flex;flex-direction:column;gap:.6rem}
+    input,textarea,select{padding:.6rem .75rem;border-radius:8px;border:1px solid rgba(9,30,50,0.08);font-size:.95rem}
+    textarea{min-height:120px;resize:vertical}
+    .btn{display:inline-block;padding:.6rem .9rem;border-radius:10px;background:var(--primary);color:white;font-weight:700;border:none;cursor:pointer}
+    .btn.secondary{background:var(--accent);color:#023;}
+    .muted{color:var(--muted);font-size:.95rem}
+
+    footer{padding:2rem 0;background:linear-gradient(180deg,#f8feff,#ffffff);margin-top:2rem;border-top:1px solid rgba(10,30,60,0.03)}
+    .foot-grid{display:flex;gap:1rem;flex-wrap:wrap;justify-content:space-between;align-items:center}
+
+    /* responsive */
+    @media (min-width:900px){
+      .hero{grid-template-columns: 1fr 420px}
+      h1{font-size:2.6rem}
+    }
+    @media (max-width:899px){
+      nav ul{display:none}
+      .mobile-nav-btn{display:inline-block}
+      .two-col{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      .gallery{grid-template-columns:1fr}
+      .logo{width:40px;height:40px}
+      .cta{padding:.4rem .6rem}
+    }
+
+    /* decorative wave bottom for hero card */
+    .wave{
+      width:100%;height:80px;margin-top:1rem;overflow:hidden;border-radius:0 0 24px 24px;
+      background:linear-gradient(180deg, rgba(127,211,185,0.08), rgba(43,143,191,0.04));
+      position:relative;
+    }
+    .wave::after{
+      content:"";position:absolute;left:-10%;right:-10%;bottom:-20px;height:120px;
+      background:radial-gradient(circle at 50% 20%, rgba(127,211,185,0.12), rgba(43,143,191,0.06));
+      transform:rotate(0deg);
+    }
+
+    /* simple modal for mobile nav */
+    .mobile-menu{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,14,26,0.45);z-index:60}
+    .mobile-menu .box{background:white;padding:1.2rem;border-radius:12px;min-width:260px}
+    .mobile-menu.open{display:flex}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo">PP</div>
+        <div>
+          <div style="font-size:.95rem">Desa <strong>Pasir Putih</strong></div>
+          <div style="font-size:.75rem;color:var(--muted)">Website Profil Desa</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#potensi">Potensi</a></li>
+          <li><a href="#galeri">Galeri</a></li>
+          <li><a href="#berita">Berita</a></li>
+          <li><a href="#kontak" class="cta">Kontak</a></li>
+        </ul>
+
+        <button class="mobile-nav-btn cta" style="display:none" aria-label="menu" onclick="toggleMobile()">Menu</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">Selamat Datang</span>
+        <h1>Website Profil Desa Pasir Putih</h1>
+        <p class="lead">Memperkenalkan potensi wisata, budaya, UMKM, dan informasi penting Desa Pasir Putih. Mudah diakses, responsif, dan ramah pengguna.</p>
+
+        <div class="hero-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+            <div style="flex:1;min-width:180px">
+              <h3 style="margin:.1rem 0">Kenapa memilih website ini?</h3>
+              <p class="small">Memberi informasi resmi, mempromosikan pariwisata, mendukung UMKM lokal, dan mempermudah komunikasi antara warga & perangkat desa.</p>
+            </div>
+            <div style="min-width:220px">
+              <div style="display:flex;gap:.6rem;align-items:center">
+                <a class="btn" href="#potensi">Lihat Potensi</a>
+                <a class="btn secondary" href="#kontak">Hubungi</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="features" aria-hidden="true" style="margin-top:1rem">
+            <div class="feature"><h4>Responsive</h4><p class="small">Tampilan rapi di HP dan desktop.</p></div>
+            <div class="feature"><h4>Galeri</h4><p class="small">Foto-foto pantai dan budaya.</p></div>
+            <div class="feature"><h4>Berita & Kegiatan</h4><p class="small">Update kegiatan desa.</p></div>
+          </div>
+
+          <div class="wave" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- right column: small profile card -->
+      <aside>
+        <div class="card" style="width:100%;max-width:420px">
+          <h3 style="margin:0 0 .25rem">Sekilas Desa</h3>
+          <p class="small">Desa Pasir Putih dikenal dengan pantai berpasir putih, nelayan tradisional, dan festival budaya tahunan. Penduduknya ramah dan aktif mengembangkan UMKM lokal.</p>
+          <hr style="margin:.9rem 0;border:0;border-top:1px solid rgba(6,18,30,0.05)">
+          <div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap">
+            <div style="flex:1">
+              <div style="font-weight:700">Kepala Desa</div>
+              <div class="muted">Bapak/Ibu Nama Kepala Desa</div>
+            </div>
+            <div style="flex:1">
+              <div style="font-weight:700">Jumlah Penduduk</div>
+              <div class="muted">~2.500 jiwa</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROFIL -->
+    <section id="profil">
+      <div style="display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <h2>Profil Desa</h2>
+          <p class="small">Sejarah singkat Desa Pasir Putih: berdiri sejak ... (isi sesuai fakta). Visi: Meningkatkan kesejahteraan melalui pariwisata berkelanjutan. Misi: Mengembangkan UMKM, menjaga lingkungan, dan meningkatkan kualitas pelayanan publik.</p>
+
+          <h3 style="margin-top:1rem">Struktur Pemerintahan</h3>
+          <ul style="padding-left:1.1rem;color:var(--muted)">
+            <li>Kepala Desa</li>
+            <li>Sekretaris Desa</li>
+            <li>Perangkat & RT/RW</li>
+          </ul>
+        </div>
+
+        <div style="width:360px">
+          <div class="card">
+            <h4 style="margin:.2rem 0">Data Singkat</h4>
+            <table style="width:100%;border-collapse:collapse">
+              <tr><td class="muted" style="padding:.35rem 0">Luas</td><td style="padding:.35rem 0;font-weight:700">12 km²</td></tr>
+              <tr><td class="muted" style="padding:.35rem 0">RT/RW</td><td style="padding:.35rem 0;font-weight:700">5 / 2</td></tr>
+              <tr><td class="muted" style="padding:.35rem 0">Kecamatan</td><td style="padding:.35rem 0;font-weight:700">Nama Kecamatan</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POTENSI -->
+    <section id="potensi">
+      <h2>Potensi Desa</h2>
+      <div class="two-col" style="margin-top:1rem;">
+        <div>
+          <div class="card">
+            <h3>Wisata Pantai</h3>
+            <p class="small">Pantai Pasir Putih menawarkan pantai berpasir halus, spot snorkeling, dan sunset yang indah.</p>
+            <h4 style="margin-top:.8rem">Pertanian & Perikanan</h4>
+            <p class="small">Lahan subur untuk tanaman garam, sayur, dan hasil laut yang melimpah mendukung ekonomi lokal.</p>
+            <h4 style="margin-top:.8rem">UMKM Lokal</h4>
+            <p class="small">Olahan ikan, kerajinan anyaman, dan oleh-oleh lokal yang dapat dipasarkan kepada wisatawan.</p>
+          </div>
+
+          <div class="card" style="margin-top:1rem">
+            <h4>Rencana Pengembangan</h4>
+            <ol style="padding-left:1.05rem;color:var(--muted)">
+              <li>Peningkatan infrastruktur pariwisata</li>
+              <li>Pelatihan UMKM dan pemasaran digital</li>
+              <li>Pengelolaan sampah dan konservasi pantai</li>
+            </ol>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h4>Statistik Singkat</h4>
+            <p class="small">Kunjungan wisatawan/ tahun (estimasi): 2.000 — 5.000</p>
+            <p class="small">UMKM terdaftar: 45</p>
+            <div style="height:8px;border-radius:999px;background:rgba(10,30,50,0.06);margin-top:.7rem;overflow:hidden">
+              <div style="width:58%;height:8px;background:linear-gradient(90deg,var(--primary),var(--accent));"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- GALERI -->
+    <section id="galeri">
+      <h2>Galeri Foto</h2>
+      <p class="small" style="margin-top:.25rem">Beberapa foto dari Desa Pasir Putih dan kegiatan masyarakat.</p>
+      <div class="card" style="margin-top:1rem">
+        <div class="gallery" aria-hidden="true">
+          <!-- Ganti src dengan foto asli desa -->
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1" alt="pantai 1">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2" alt="nelayan">
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3" alt="kegiatan budaya">
+          <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4" alt="pantai 2">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5" alt="produk UMKM">
+          <img src="https://images.unsplash.com/photo-1541944743824-3b2ce6a56eaa?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6" alt="sunset">
+        </div>
+      </div>
+    </section>
+
+    <!-- BERITA -->
+    <section id="berita">
+      <h2>Berita & Kegiatan</h2>
+      <div class="card" style="margin-top:1rem">
+        <div class="news-list">
+          <div class="news-item">
+            <img class="news-thumb" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=7" alt="">
+            <div>
+              <div style="font-weight:700">Festival Pantai 2025</div>
+              <div class="muted" style="font-size:.9rem">Tanggal: 12 Juni 2025 — Kegiatan seni & kuliner lokal.</div>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <img class="news-thumb" src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8" alt="">
+            <div>
+              <div style="font-weight:700">Pelatihan UMKM Digital</div>
+              <div class="muted" style="font-size:.9rem">Tanggal: 20 April 2025 — Pelatihan pembuatan kemasan dan pemasaran online.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem;text-align:right">
+          <a href="#berita" class="muted" style="text-decoration:underline">Lihat semua berita →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak">
+      <h2>Kontak & Lokasi</h2>
+      <div class="two-col" style="margin-top:1rem">
+        <div>
+          <div class="card">
+            <h3>Hubungi Pemerintah Desa</h3>
+            <p class="small">Isi formulir berikut untuk pertanyaan atau layanan administrasi (contoh: surat keterangan). Form ini mengirim email jika dikoneksikan ke backend SMTP atau layanan pihak ketiga.</p>
+
+            <form id="contactForm" onsubmit="submitForm(event)">
+              <input type="text" id="name" placeholder="Nama lengkap" required />
+              <input type="email" id="email" placeholder="Email" required />
+              <input type="text" id="subject" placeholder="Subjek" required />
+              <textarea id="message" placeholder="Pesan / Permohonan..." required></textarea>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:center">
+                <button class="btn" type="submit">Kirim Pesan</button>
+                <div id="formStatus" class="muted" aria-live="polite"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h4>Alamat</h4>
+            <div class="muted">Desa Pasir Putih, Kecamatan NamaKec, Kabupaten NamaKab, Provinsi</div>
+
+            <h4 style="margin-top:.8rem">Peta Lokasi</h4>
+            <!-- contoh embed map (ganti src dengan embed dari Google Maps yang benar) -->
+            <div style="width:100%;height:220px;border-radius:10px;overflow:hidden;margin-top:.5rem">
+              <iframe
+                width="100%"
+                height="100%"
+                frameborder="0"
+                style="border:0"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509..."></iframe>
+            </div>
+
+            <h4 style="margin-top:.8rem">Kontak</h4>
+            <div class="muted">Telp: (036x) xxx-xxxx</div>
+            <div class="muted">Email: kantor@pasirputih.desa.id</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Website Profil Desa Pasir Putih</strong>
+          <div class="muted" style="margin-top:.25rem">© <span id="year"></span> Pemerintah Desa Pasir Putih</div>
+        </div>
+
+        <div class="muted">Dibuat oleh Fransiskus Xaverius Koli Sura — Teknik Komputer dan Jaringan</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile menu modal -->
+  <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="box">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Menu</strong>
+        <button onclick="toggleMobile()">Tutup</button>
+      </div>
+      <hr style="margin:.6rem 0">
+      <nav>
+        <ul style="display:flex;flex-direction:column;gap:.5rem">
+          <li><a href="#home" onclick="toggleMobile()">Beranda</a></li>
+          <li><a href="#profil" onclick="toggleMobile()">Profil</a></li>
+          <li><a href="#potensi" onclick="toggleMobile()">Potensi</a></li>
+          <li><a href="#galeri" onclick="toggleMobile()">Galeri</a></li>
+          <li><a href="#berita" onclick="toggleMobile()">Berita</a></li>
+          <li><a href="#kontak" onclick="toggleMobile()">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle (display button only when small)
+    function toggleMobile(){
+      const mm = document.getElementById('mobileMenu');
+      mm.classList.toggle('open');
+      mm.setAttribute('aria-hidden', mm.classList.contains('open') ? 'false' : 'true');
+    }
+
+    // Form handler (client-side only)
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const status = document.getElementById('formStatus');
+
+      // Simple validation
+      if(!name || !email || !subject || !message){
+        status.textContent = 'Mohon isi semua kolom.';
+        return;
+      }
+
+      // Since there's no backend in this demo, we'll show a success message
+      status.textContent = 'Pesan dikirim (demo). Untuk fungsional, hubungkan form ke backend atau layanan email API.';
+      e.target.reset();
+
+      // Example: you could use fetch() to POST data to your server:
+      // fetch('/api/contact', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name,email,subject,message})})
+      //   .then(r=>r.json()).then(res=>status.textContent = 'Terkirim!')
+      //   .catch(err=>status.textContent = 'Gagal mengirim, coba lagi nanti.');
+    }
+
+    // show mobile menu button when small viewport
+    function checkMobileBtn(){
+      const btn = document.querySelector('.mobile-nav-btn');
+      if(window.innerWidth <= 899){
+        btn.style.display = 'inline-block';
+      } else {
+        btn.style.display = 'none';
+        // ensure mobile menu closed
+        const mm = document.getElementById('mobileMenu');
+        mm.classList.remove('open');
+        mm.setAttribute('aria-hidden','true');
+      }
+    }
+    window.addEventListener('resize', checkMobileBtn);
+    checkMobileBtn();
+  </script>
+</body>
+</html>
